@@ -15,9 +15,14 @@ If you don't have npm installed, install it `npm install -g npm`
 
 ## Phase 1
 1. Make a directory for your node project
-`mkdir alma_webhooks`
+```mkdir alma_webhooks```
+
 2. Initialize your project
-`npm init`
-You should now have a package.json file
-`cat package.json` to check to out
-3.
+```npm init```
+    You should now have a package.json file
+```cat package.json``` to check to out
+
+3. Install packages for this project
+```npm install --save express typescript ts-node```
+
+4. Install packages for developing this project
