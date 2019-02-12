@@ -51,7 +51,7 @@ Open src/server.ts.
     });
 ```
 
-7. Configure your typescript build.
+8. Configure your typescript build.
 Open a file called tsconfig.json and insert the following configuration:
 ```json
     {
@@ -82,10 +82,10 @@ Open a file called tsconfig.json and insert the following configuration:
     }
 ```
 
-8. Add your typescript build task to your package.json
+9. Add your typescript build task to your package.json
 add ```"build": "tsc"``` to the scripts section. This will compile your typescript files in src to javascript files in dist.
 
-9. Initialize your linter.
+10. Initialize your linter.
 ```tslint --init```
 You should see a tslint.json file which contains something like
 ```json
@@ -100,19 +100,19 @@ You should see a tslint.json file which contains something like
     }
 ```
 
-10. Add your lint task to your package.json file.
+11. Add your lint task to your package.json file.
 add ```"lint": "tslint --project tsconfig.json"``` to the scripts section.
 
-11. Run your linter with `npm run lint`
+12. Run your linter with `npm run lint`
 
-12. Compile your typescript. `npm run build`
+13. Compile your typescript. `npm run build`
 
-13. Start your basic express app. `node ./dist/server.js`
+14. Start your basic express app. `node ./dist/server.js`
 
-14. Add your run server task to your package.json file.
+15. Add your run server task to your package.json file.
 add ```"start": "node ./dist/server.js"``` to the scripts section.
 
-15. Go to `localhost:8000` in your browser. You should see "Hello World"
+16. Go to `localhost:8000` in your browser. You should see "Hello World"
 
 ## Next Steps
 [Continue to Phase 2](phase2.md)
