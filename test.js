@@ -2,19 +2,19 @@ process.env.NODE_ENV = 'test';
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('./dist/server.test');
-let should = chai.should();
+let expect = chai.expect;
+let assert = chai.assert;
 
 
 chai.use(chaiHttp);
 
-describe('GET /', () => {
-    it('it should return hello world', (done) => {
+describe('GET /alma_webhook', () => {
+    it('it should GET an alma_webhook', (done) => {
         chai.request(server)
-            .get('/')
+            .get('/alma_webhook?challenge=toast')
             .end((err, res) => {
-                res.should.have.status(200);
-                console.log(res.body);
-                res.body.should.equal('Hello World!');
+                expect(res.status, 200);
+                assert.deepEqual(res.body, {'challenge': 'toast'});
                 done();
             });
     });
