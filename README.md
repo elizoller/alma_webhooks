@@ -15,6 +15,9 @@ If you don't have npm installed, install it `npm install -g npm`
 ## Next Steps
 [Continue to Phase 1](phase1.md)
 
+## Resources
+[Ex Libris Documentation](https://developers.exlibrisgroup.com/alma/integrations/webhooks/)
+
 
 
 

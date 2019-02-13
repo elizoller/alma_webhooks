@@ -102,19 +102,20 @@ Open src/server.test.js
 
 13. Build your code and run your tests. `npm run build` `npm run test`
 
-14. Create a config file, called config.js
+14. Create a config file, called config.ts
 For now, it can be pretty minimal. But this would be a good place to store any parameters you don't necessarily want to store in the code. Like URLs or API keys, or in this case, the websecret we're going to use.
 ```javascript
-    const config = {
+    export let config = {
         dev: {
-            webhook_secret: "test_secret"
-        }
-    }
-    module.exports = config;
+            alma: {
+                webhook_secret: "test_secret",
+            },
+        },
+    };
 ```
 
 15. Import your config file in your alma.ts file.
-```import { config } from "../config";```
+```import { config } from "./../config";```
 Now you'll be able to acess the config object in your module file.
 
 16. Install the necessary packages for verifying the signature.
@@ -137,11 +138,54 @@ Add the import to the top of your src/alma.ts module file. Then add the new func
     export let postWebhook = (req: Request, res: Response, next: NextFunction) => {
         console.log("POST request received");
         const secret = config.dev.alma.webhook_secret;
-        if (!validateSignature(req.body,
-            secret,
-            req.get("X-Exl-Signature"))) {
+        if (!req.get("X-Exl-Signature") || !validateSignature(req.body,
+            secret, req.get("X-Exl-Signature"))) {
             return res.status(401).send({ errorMessage: "Invalid Signature" });
         }
         res.json({ message: "Successful webhook received", action: req.body.action });
     };
 ```
+
+19. Now if we build and run our tests, we should get an invalid signature error.
+`npm run build` `npm run test`
+Should produce something like
+```
+      Uncaught AssertionError: expected { errorMessage: 'Invalid Signature' } to deeply equal {}
+      + expected - actual
+
+      -{
+      -  "errorMessage": "Invalid Signature"
+      -}
+      +{}
+```
+
+20. Adjust your tests to test for both invalid signature and a valid one.
+```javascript
+describe('POST /alma_webhook', () => {
+    it('it should return an error if no signature passed', (done) => {
+        chai.request(server)
+            .post('/alma_webhook')
+            .send({"body":"garble"})
+            .end((err, res) => {
+                expect(res.status, 401);
+                assert.deepEqual(res.body, {"errorMessage": "Invalid Signature"});
+                done();
+            });
+    });
+
+    it("should accept a valid signature", (done) => {
+        const req = chai.request(server)
+                        .post("/alma_webhook")
+                        .send({ string: "garble", action: "exl-event" })
+                        .set('X-Exl-Signature', 'vPApXFBjxqVEykEJgDiD7dBuXqHvY8nIJdGrXUFXh4k=')
+                        .end((err, res) => {
+                            chai.expect(res).to.have.status(200);
+                            chai.expect(res).to.be.json;
+                            assert.deepEqual(res.body, { message: "Successful webhook received", action: "exl-event" })
+                            done();
+                        });
+    });
+});
+```
+
+21.
