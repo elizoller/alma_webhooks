@@ -9,8 +9,8 @@ This will walk you through a series of questions about your project. You can mod
 ```cat package.json``` to check to out
 
 3. Install packages for this project
-```npm install --save express```
-**You could use yarn instead for package management. The command would be ```yarn add express```
+```npm install --save express body-parser```
+**You could use yarn instead for package management. The command would be ```yarn add express body-parser```
 
 4. Install packages for developing this project
 ```npm install --save-dev typescript ts-node tslint @types/express @types/node```
@@ -24,6 +24,7 @@ This will walk you through a series of questions about your project. You can mod
 Open src/app.ts in a text editor, IDE, or terminal based text editor.
 ```javascript
     "use strict";
+    import * as bodyParser from "body-parser";
     import * as express from "express";
     import * as almaModule from "./alma";
 
@@ -32,6 +33,8 @@ Open src/app.ts in a text editor, IDE, or terminal based text editor.
     app.get("/", (req, res) => {
         res.send("Hello World!");
     });
+
+    app.use(bodyParser.json());
 
     app.get("/alma_webhook", almaModule.getWebhook);
     app.post("/alma_webhook", almaModule.postWebhook);
