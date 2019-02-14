@@ -19,6 +19,16 @@ export let postWebhook = (req: Request, res: Response, next: NextFunction) => {
         return res.status(401).send({ errorMessage: "Invalid Signature" });
     }
 
+    const action = req.body.action.toLowerCase();
+    switch (action) {
+        case "bib":
+            console.log("received a bib action");
+            console.log(req.body);
+            break;
+        default:
+            console.log(`No handler for type ${action}`);
+            break;
+    }
     res.json({ message: "Successful webhook received", action: req.body.action });
 };
 
