@@ -18,3 +18,4 @@ If you don't have npm installed, install it `npm install -g npm`
 ## Resources
 [Ex Libris Documentation](https://developers.exlibrisgroup.com/alma/integrations/webhooks/)
 
+[Workshop Slides](https://bit.ly/alma-node-slides)
