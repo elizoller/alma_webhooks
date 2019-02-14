@@ -10,14 +10,11 @@ If you require a specific version of node running in your environment for anothe
 2. Check you have npm installed
 `npm -v`
 If you don't have npm installed, install it `npm install -g npm`
-3. It'll be best if you have access to an Alma sandbox, but you can still participate if you don't.
+3. It'll be best if you have access to an Alma sandbox, but you can still participate if you don't. Preferrably with the role General System Administrator (this will allow you to create an integration profile).
 
 ## Next Steps
 [Continue to Phase 1](phase1.md)
 
 ## Resources
 [Ex Libris Documentation](https://developers.exlibrisgroup.com/alma/integrations/webhooks/)
-
-
-
 

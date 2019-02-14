@@ -190,25 +190,5 @@ describe('POST /alma_webhook', () => {
 
 21. Ensure your tests pass. `npm run build` `npm run test`
 
-
-
-22. Update your Alma Configuration. Go to your Sandbox URL and login.
-    a. Go to Alma Configuration (Tool Icon in upper right hand corner).
-    b. Select the General Tab on the left.
-    c. Then click Integration Profiles (under External Systems).
-    d. Most likely if you're here, you won't have an Integration Profile set up for webhooks, so we'll add one.
-    e. Click add Integration Profile.
-    f. Enter a code (no spaces or special characters).
-    g. Enter a name (human readable).
-    h. Choose "Webhooks" for the integration type.
-    i. Write a description.
-    j. Click Next.
-    k. Add your webhook listener URL. If you're running locally, we'll need to temporarily expose your app to the greater internet (This is really not secure and only recommended for brief testing. Install localtunnel with `npm install -g localtunnel` then run `lt --port 3000`. Note that your app must be running to do this `npm run start`. An example might be something like https://red-rattlesnake-79.localtunnel.me/alma_webhook). If you're running on a hosted VM like in AWS, you just need your web accessible address (and port). If you have a publically accessible IP then you can probably access it that way as well.
-    j. Enter your secret. This must match the secret you put in your config.ts file. It should probably be something more secure than what I'm using in this demo.
-    k. Click the Activate button. If it worked, you should see a success message.
-    j. Select your message type. For this demo, we'll use JSON, but feel free to use XML if you prefer it.
-    l. Select the event types that you want to subscribe to. For now, let's just choose BIB Records.
-    m. Click save
-
 ## Next Steps
 [Continue to Phase 3](phase3.md)
