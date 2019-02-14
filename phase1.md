@@ -2,25 +2,36 @@
 1. Make a directory for your node project
 ```mkdir alma_webhooks```
 
-2. Initialize your project
+2. Initialize git. I recommend using version control wherever possible. It's always beneficial to know when and why you (or someone else) made a change. Commit at whatever frequency you feel is necessary.
+```git init```
+
+3. Add a .gitignore file.
+```
+node_modules/*
+dist/*
+config.ts
+.DS_Store
+```
+
+4. Initialize your project
 ```npm init```
 This will walk you through a series of questions about your project. You can modify these later in the package.json file.
     You should now have a package.json file
 ```cat package.json``` to check to out
 
-3. Install packages for this project
+5. Install packages for this project
 ```npm install --save express body-parser```
 **You could use yarn instead for package management. The command would be ```yarn add express body-parser```
 
-4. Install packages for developing this project
+6. Install packages for developing this project
 ```npm install --save-dev typescript ts-node tslint @types/express @types/node```
 **Or, if you're using yarn, it'd be ```yarn global add typescript ts-node tslint @types/express @types/node --dev``` If you choose to use yarn, you'll see a yarn.lock file. If you use npm, you'll see a package-lock.json file in your working directory.
 
-5. Create a src and dist directory so we can compile our code
+7. Create a src and dist directory so we can compile our code
 ```mkdir src```
 ```mkdir dist```
 
-6. Add a basic app file.
+8. Add a basic app file.
 Open src/app.ts in a text editor, IDE, or terminal based text editor.
 ```javascript
     "use strict";
@@ -42,7 +53,7 @@ Open src/app.ts in a text editor, IDE, or terminal based text editor.
     export default app;
 ```
 
-7. Add a basic server file.
+9. Add a basic server file.
 Open src/server.ts.
 ```javascript
     import app from "./app";
@@ -54,7 +65,7 @@ Open src/server.ts.
     });
 ```
 
-8. Configure your typescript build.
+10. Configure your typescript build.
 Open a file called tsconfig.json and insert the following configuration:
 ```json
     {
@@ -85,10 +96,10 @@ Open a file called tsconfig.json and insert the following configuration:
     }
 ```
 
-9. Add your typescript build task to your package.json
+11. Add your typescript build task to your package.json
 add ```"build": "tsc"``` to the scripts section. This will compile your typescript files in src to javascript files in dist.
 
-10. Initialize your linter.
+12. Initialize your linter.
 ```tslint --init```
 You should see a tslint.json file which contains something like
 ```json
@@ -103,19 +114,19 @@ You should see a tslint.json file which contains something like
     }
 ```
 
-11. Add your lint task to your package.json file.
+13. Add your lint task to your package.json file.
 add ```"lint": "tslint --project tsconfig.json"``` to the scripts section.
 
-12. Run your linter with `npm run lint`
+14. Run your linter with `npm run lint`
 
-13. Compile your typescript. `npm run build`
+15. Compile your typescript. `npm run build`
 
-14. Start your basic express app. `node ./dist/server.js`
+16. Start your basic express app. `node ./dist/server.js`
 
-15. Add your run server task to your package.json file.
+17. Add your run server task to your package.json file.
 add ```"start": "node ./dist/server.js"``` to the scripts section.
 
-16. Go to `localhost:8000` in your browser. You should see "Hello World"
+18. Go to `localhost:8000` in your browser. You should see "Hello World"
 
 ## Next Steps
 [Continue to Phase 2](phase2.md)
