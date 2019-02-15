@@ -17,9 +17,10 @@ In your postWebhook function, add
 
 2. Build and restart your app.
 `npm run build` `npm run start`
-You may need to restart your localtunnel if you're using that methodology. `lt --port 3000`
 
-3. Update your Alma Configuration. Go to your Sandbox URL and login.
+3. If you're running locally, we'll need to temporarily expose your app to the greater internet (This is really not secure and only recommended for brief testing. Install localtunnel with `npm install -g localtunnel` then run `lt --port 3000`. Note that your app must be running to do this `npm run start`. An example might be something like https://red-rattlesnake-79.localtunnel.me/alma_webhook). If you're running on a hosted VM like in AWS, you just need your web accessible address (and port). If you have a publically accessible IP then you can probably access it that way as well. Do note that it must be a secure HTTPS connection.
+
+4. Update your Alma Configuration. Go to your Sandbox URL and login.
     1. Go to Alma Configuration (Tool Icon in upper right hand corner).
     2. Select the General Tab on the left.
     3. Then click Integration Profiles (under External Systems).
@@ -30,16 +31,16 @@ You may need to restart your localtunnel if you're using that methodology. `lt -
     8. Choose "Webhooks" for the integration type.
     9. Write a description.
     10. Click Next.
-    11. Add your webhook listener URL. If you're running locally, we'll need to temporarily expose your app to the greater internet (This is really not secure and only recommended for brief testing. Install localtunnel with `npm install -g localtunnel` then run `lt --port 3000`. Note that your app must be running to do this `npm run start`. An example might be something like https://red-rattlesnake-79.localtunnel.me/alma_webhook). If you're running on a hosted VM like in AWS, you just need your web accessible address (and port). If you have a publically accessible IP then you can probably access it that way as well. Do note that it must be a secure HTTPS connection.
+    11. Add your webhook listener URL.
     12. Enter your secret. This must match the secret you put in your config.ts file. It should probably be something more secure than what I'm using in this demo.
     13. Click the Activate button. If it worked, you should see a success message.
     14. Select your message type. For this demo, we'll use JSON, but feel free to use XML if you prefer it.
     15. Select the event types that you want to subscribe to. For now, let's just choose BIB Records.
     16. Click save.
 
-4. Then edit a BIB record in Alma.
+5. Then edit a BIB record in Alma.
 
-5. Check your console. You might see someething like:
+6. Check your console. You might see someething like:
 ```
   { id: '6483925840173882651',
   action: 'BIB',
@@ -79,4 +80,4 @@ You may need to restart your localtunnel if you're using that methodology. `lt -
   representation: null }
 ```
 
-6. Write whatever functionality you want!
+7. Write whatever functionality you want!
