@@ -66,7 +66,7 @@ Open src/server.ts.
 ```
 
 10. Configure your typescript build.
-Open a file called tsconfig.json and insert the following configuration:
+Run `tsc --init` to create a tsconfig.json file. Open a file called tsconfig.json and insert the following configuration:
 ```json
     {
         "compilerOptions": {
@@ -126,7 +126,7 @@ add ```"lint": "tslint --project tsconfig.json"``` to the scripts section.
 17. Add your run server task to your package.json file.
 add ```"start": "node ./dist/server.js"``` to the scripts section.
 
-18. Go to `localhost:8000` in your browser. You should see "Hello World"
+18. Go to `localhost:3000` in your browser (or whatever port you specified). You should see "Hello World"
 
 ## Next Steps
 [Continue to Phase 2](phase2.md)
