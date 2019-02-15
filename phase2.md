@@ -30,7 +30,7 @@
 5. Add a task in your package.json file for running tests. Modify the "test" script to be ```./node_modules/mocha/bin/mocha --timeout 10000```
 
 6. Add a test server file.
-Open src/server.test.js
+Open src/server.test.ts
 ```javascript
     import app from "./app";
     const port = 3001;
