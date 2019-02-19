@@ -13,7 +13,7 @@
         ]
     },
     "include": [
-        "src/**/*.ts", "config.ts"
+        "src/**/*.ts", "src/config.ts"
     ],
     "exclude": [
         "node_modules"
