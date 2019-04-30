@@ -1,5 +1,5 @@
 # Using Node to Listen to Alma Webhooks
-For Code4Lib 2019 Workshop by Eli Zoller
+a startup app and step by step instructions for setting up a node app to listen to Alma webhooks
 
 ## Get Started - To Do before the workshop starts
 1. Check your node version
@@ -18,4 +18,5 @@ If you don't have npm installed, install it `npm install -g npm`
 ## Resources
 [Ex Libris Documentation](https://developers.exlibrisgroup.com/alma/integrations/webhooks/)
 
-[Workshop Slides](https://bit.ly/alma-node-slides)
+[Full Workshop Slides](https://bit.ly/alma-node-slides)
+[Brief Presentation Slides](http://bit.ly/eluna_ez_webhooks)
